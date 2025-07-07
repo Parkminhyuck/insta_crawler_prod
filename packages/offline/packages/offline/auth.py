@@ -27,9 +27,7 @@ def login():
         pass
 
     # Wait for login form
-    WebDriverWait(driver, 20).until(
-        EC.url_changes("https://www.instagram.com/accounts/login/")
-    )))
+    WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.NAME, "username")))
     driver.find_element(By.NAME, "username").send_keys(config.USERNAME)
     pwd = driver.find_element(By.NAME, "password")
     pwd.send_keys(config.PASSWORD)
@@ -37,7 +35,9 @@ def login():
 
     # Wait until Home icon indicates login success
     WebDriverWait(driver, 20).until(
+        EC.presence_of_element_located((By.XPATH, "//span[@aria-label='Home']"))
+    )
+    WebDriverWait(driver, 20).until(
         EC.url_changes("https://www.instagram.com/accounts/login/")
-    ))
     )
     return driver
