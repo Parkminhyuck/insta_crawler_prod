@@ -1,0 +1,5 @@
+{
+  "DELAY_MULT": 1.2,
+  "MAX_RETRY": 3,
+  "WAIT_GRID_SEC": 12
+}

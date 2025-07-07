@@ -1,0 +1,2 @@
+[DELAY]
+multiplier = 1.5
