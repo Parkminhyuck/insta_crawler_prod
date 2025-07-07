@@ -1,0 +1,6 @@
+﻿username,success,grade,message
+test_user_001,True,A,👍 응답받음!
+test_user_002,False,C,
+test_user_003,True,S,💬 긍정반응
+test_user_004,False,F,
+test_user_005,True,B,📝 답장 완료

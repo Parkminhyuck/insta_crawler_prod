@@ -1,0 +1,81 @@
+2025-05-20 16:20:39,256 [INFO] WDM: ====== WebDriver manager ======
+2025-05-20 16:20:40,158 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 16:20:40,202 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 16:20:40,224 [INFO] WDM: There is no [win64] chromedriver "136.0.7103.94" for browser google-chrome "136.0.7103" in cache
+2025-05-20 16:20:40,224 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 16:20:40,316 [INFO] WDM: WebDriver version 136.0.7103.94 selected
+2025-05-20 16:20:40,319 [INFO] WDM: Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/136.0.7103.94/win32/chromedriver-win32.zip
+2025-05-20 16:20:40,320 [INFO] WDM: About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/136.0.7103.94/win32/chromedriver-win32.zip
+2025-05-20 16:20:40,389 [INFO] WDM: Driver downloading response is 200
+2025-05-20 16:20:40,556 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 16:20:41,613 [INFO] WDM: Driver has been saved in cache [C:\Users\s_k10\.wdm\drivers\chromedriver\win64\136.0.7103.94]
+2025-05-20 16:20:49,408 [INFO] WDM: ====== WebDriver manager ======
+2025-05-20 16:20:50,242 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 16:20:50,277 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 16:20:50,299 [INFO] WDM: Driver [C:\Users\s_k10\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 16:30:40,412 [INFO] WDM: ====== WebDriver manager ======
+2025-05-20 16:30:41,178 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 16:30:41,211 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 16:30:41,236 [INFO] WDM: Driver [C:\Users\s_k10\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 16:31:26,402 [INFO] WDM: ====== WebDriver manager ======
+2025-05-20 16:31:27,140 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 16:31:27,167 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 16:31:27,190 [INFO] WDM: Driver [C:\Users\s_k10\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 16:34:05,253 [INFO] WDM: ====== WebDriver manager ======
+2025-05-20 16:34:05,980 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 16:34:06,009 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 16:34:06,031 [INFO] WDM: Driver [C:\Users\s_k10\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 16:34:50,928 [INFO] WDM: ====== WebDriver manager ======
+2025-05-20 16:34:51,665 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 16:34:51,690 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 16:34:51,711 [INFO] WDM: Driver [C:\Users\s_k10\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 16:42:15,948 [INFO] WDM: ====== WebDriver manager ======
+2025-05-20 16:42:16,710 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 16:42:16,738 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 16:42:16,761 [INFO] WDM: Driver [C:\Users\s_k10\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 16:45:29,670 [INFO] WDM: ====== WebDriver manager ======
+2025-05-20 16:45:30,464 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 16:45:30,492 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 16:45:30,514 [INFO] WDM: Driver [C:\Users\s_k10\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 16:45:53,061 [INFO] WDM: ====== WebDriver manager ======
+2025-05-20 16:45:53,797 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 16:45:53,823 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 16:45:53,847 [INFO] WDM: Driver [C:\Users\s_k10\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 17:05:50,189 [INFO] WDM: ====== WebDriver manager ======
+2025-05-20 17:05:51,074 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 17:05:51,101 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 17:05:51,124 [INFO] WDM: Driver [C:\Users\s_k10\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 17:23:45,395 [INFO] WDM: ====== WebDriver manager ======
+2025-05-20 17:23:46,289 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 17:23:46,324 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 17:23:46,348 [INFO] WDM: Driver [C:\Users\s_k10\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 17:26:38,557 [INFO] WDM: ====== WebDriver manager ======
+2025-05-20 17:26:39,804 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 17:26:39,831 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 17:26:39,855 [INFO] WDM: Driver [C:\Users\s_k10\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 17:26:59,609 [INFO] WDM: ====== WebDriver manager ======
+2025-05-20 17:27:00,350 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 17:27:00,371 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 17:27:00,391 [INFO] WDM: Driver [C:\Users\s_k10\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 17:31:29,975 [INFO] WDM: ====== WebDriver manager ======
+2025-05-20 17:31:30,734 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 17:31:30,764 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 17:31:30,791 [INFO] WDM: Driver [C:\Users\s_k10\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 17:32:01,582 [INFO] WDM: ====== WebDriver manager ======
+2025-05-20 17:32:02,340 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 17:32:02,362 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 17:32:02,383 [INFO] WDM: Driver [C:\Users\s_k10\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 17:38:23,098 [INFO] WDM: ====== WebDriver manager ======
+2025-05-20 17:38:23,838 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 17:38:23,867 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 17:38:23,890 [INFO] WDM: Driver [C:\Users\s_k10\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 17:39:01,786 [INFO] WDM: ====== WebDriver manager ======
+2025-05-20 17:39:02,533 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 17:39:02,553 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 17:39:02,574 [INFO] WDM: Driver [C:\Users\s_k10\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+2025-05-20 17:39:40,048 [INFO] WDM: ====== WebDriver manager ======
+2025-05-20 17:39:40,822 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 17:39:40,846 [INFO] WDM: Get LATEST chromedriver version for google-chrome
+2025-05-20 17:39:40,867 [INFO] WDM: Driver [C:\Users\s_k10\.wdm\drivers\chromedriver\win64\136.0.7103.94\chromedriver-win32/chromedriver.exe] found in cache
+{"uid": "gonggyu_gonggu", "success": false, "message": 0, "timestamp": "2025-07-06T23:40:36"}
+{"uid": "another_test_user", "success": false, "message": 0, "timestamp": "2025-07-06T23:41:06"}

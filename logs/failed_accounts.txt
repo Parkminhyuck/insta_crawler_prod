@@ -1,0 +1,3 @@
+gonggyu_gonggu 실패 ▶ 'tuple' object has no attribute 'get'
+gonggyu_gonggu 실패 ▶ 'tuple' object has no attribute 'get'
+another_test_user 실패 ▶ 'tuple' object has no attribute 'get'
