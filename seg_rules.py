@@ -5,7 +5,7 @@ SEG_RULES = {
         "filter": "followers>=1000"  # Example filter
     },
     "공동구매": {
-        "keywords": ["공동구매", "그룹구매", "할인"],
+        "keywords": ["공동구매", "그룹구매", "공동구매", "할인"],
         "filter": "followers>=500"
     },
     "공구예정": {

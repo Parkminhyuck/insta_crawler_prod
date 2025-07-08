@@ -1,55 +1,21 @@
 
-import time
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 
-# 크롬 드라이버 설정
-def setup_driver():
-    options = Options()
-    options.add_argument("--headless")  # 헤드리스 모드 설정
-    options.add_argument("--disable-gpu")
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service, options=options)
-    return driver
+# 수동으로 다운로드한 크롬 드라이버 경로 설정
+driver_path = "E:/insta_crawler_prod/chrome-win64/chromedriver.exe"  # 다운로드한 chromedriver.exe 파일 경로
 
-# 해시태그 크롤링 함수
-def crawl_hashtag_accounts(driver, hashtags, max_posts_per_tag=20):
-    collected = set()
+# 크롬 옵션 설정
+options = Options()
+options.add_argument("--headless")  # 헤드리스 모드 설정
+options.add_argument("--disable-gpu")  # GPU 사용 안함
+options.add_argument("--no-sandbox")  # 보안 샌드박스 문제 우회
+options.add_argument("--disable-software-rasterizer")  # 소프트웨어 방식 렌더링 강제
+service = Service(driver_path)  # 서비스 객체 생성
+driver = webdriver.Chrome(service=service, options=options)  # options만 전달
 
-    for tag in hashtags:
-        print(f"🔎 해시태그 #{tag} 수집 중...")
-        url = f"https://www.instagram.com/explore/tags/{tag}/"
-        driver.get(url)
-        time.sleep(3)
-
-        # 게시물 링크 수집
-        links = driver.find_elements(By.CSS_SELECTOR, "article a")
-        posts = [a.get_attribute("href") for a in links if "/p/" in a.get_attribute("href")][:max_posts_per_tag]
-
-        for post_url in posts:
-            driver.get(post_url)
-            time.sleep(1)
-            try:
-                username = WebDriverWait(driver, 5).until(
-                    EC.presence_of_element_located((By.CSS_SELECTOR, "header a"))
-                ).text
-                if username not in collected:
-                    collected.add(username)
-                    print(f"수집된 계정: {username}")
-            except:
-                continue
-
-    return list(collected)
-
-# 실행 예시
-if __name__ == "__main__":
-    hashtags = ["공구", "공동구매", "공구예정"]  # 해시태그 목록
-    driver = setup_driver()
-    accounts = crawl_hashtag_accounts(driver, hashtags)
-    print(f"수집된 계정 목록: {accounts}")
-    driver.quit()
+# 구글 페이지 열기
+driver.get("https://www.google.com")
+print("구글 페이지가 정상적으로 열렸습니다.")
+driver.quit()

@@ -1,15 +1,21 @@
-from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 
-def crawl_hashtag_users(segment, tag):
-    # 올바르게 드라이버 초기화
-    driver = webdriver.Chrome(executable_path="path_to_chromedriver")  # chromedriver 경로 설정
-    
-    # URL 생성
-    url = f"https://www.instagram.com/explore/tags/{segment}/"
-    
-    # 웹 페이지 로딩
+def crawl_hashtag_users(driver, tag):
+    url = f"https://www.instagram.com/explore/tags/{tag}/"
     driver.get(url)
-
-    # 그 외 크롤링 작업...
-
-    driver.quit()  # 크롤링이 끝난 후 드라이버 종료
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    try:
+        WebDriverWait(driver, 20).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "article div img"))
+        )
+    except TimeoutException:
+        print(f"⚠️ 태그 #{tag} 로딩 실패: Timeout waiting for images")
+        return
+    posts = driver.find_elements(By.CSS_SELECTOR, "article div a")
+    for post in posts:
+        href = post.get_attribute("href")
+        if href:
+            print(href)

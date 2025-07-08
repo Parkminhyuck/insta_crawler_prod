@@ -1,23 +1,15 @@
-import csv, os, datetime, json
+import os
+from datetime import datetime
 
-LOG_FILE = "logs/app.log"
-os.makedirs("logs", exist_ok=True)
+LOG_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "logs")
+SCREENSHOT_DIR = os.path.join(LOG_DIR, "screenshots")
+os.makedirs(SCREENSHOT_DIR, exist_ok=True)
 
-def log_result(uid, result):
-    # result can be dict or tuple
-    if isinstance(result, tuple):
-        success, message = (result + (None, None))[:2]
-    elif isinstance(result, dict):
-        success = result.get("success")
-        message = result.get("message")
-    else:
-        success = False
-        message = str(result)
+def log_error(message: str):
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    with open(os.path.join(LOG_DIR, "errors.log"), "a", encoding="utf-8") as f:
+        f.write(f"[{timestamp}] {message}\n")
 
-    with open(LOG_FILE, "a", encoding="utf-8") as f:
-        ts = datetime.datetime.now().isoformat(timespec="seconds")
-        f.write(json.dumps({"uid": uid,
-                            "success": bool(success),
-                            "message": message,
-                            "timestamp": ts},
-                           ensure_ascii=False) + "\n")
+def get_screenshot_path(uid: str):
+    filename = f"{uid}_error.png"
+    return os.path.join(SCREENSHOT_DIR, filename)
