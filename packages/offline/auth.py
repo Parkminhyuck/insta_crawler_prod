@@ -1,43 +1,42 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
+
+import time
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.chrome import ChromeDriverManager
-import config
+from selenium.common.exceptions import TimeoutException
 
-def login():
-    options = Options()
-    options.headless = False
-    options.add_argument("--disable-gpu")
-    options.add_argument("--disable-blink-features=AutomationControlled")
-    options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)")
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+def login(driver, username, password):
+    """로그인 후 페이지 로딩 안정화 처리"""
+    print("🔐 로그인 페이지 접속...")
     driver.get("https://www.instagram.com/accounts/login/")
+    time.sleep(3)
 
-    # Accept cookie banner if present
+    id_input = driver.find_element(By.NAME, "username")
+    pw_input = driver.find_element(By.NAME, "password")
+
+    id_input.clear()
+    id_input.send_keys(username)
+    pw_input.clear()
+    pw_input.send_keys(password)
+    pw_input.submit()
+
+    # 홈 네비게이션 바가 보일 때까지 대기
     try:
-        btn = WebDriverWait(driver, 5).until(
-            EC.element_to_be_clickable((By.XPATH, "//button[text()='Accept All']"))
+        WebDriverWait(driver, 60).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "nav"))
         )
-        btn.click()
-    except:
-        pass
+        print("🔓 로그인 성공 및 네비게이션 감지")
+    except TimeoutException:
+        print("⚠️ 로그인 후 네비게이션 감지 타임아웃")
 
-    # Wait for login form
-    WebDriverWait(driver, 20).until(
-        EC.url_changes("https://www.instagram.com/accounts/login/")
-    )))
-    driver.find_element(By.NAME, "username").send_keys(config.USERNAME)
-    pwd = driver.find_element(By.NAME, "password")
-    pwd.send_keys(config.PASSWORD)
-    pwd.send_keys(Keys.RETURN)
-
-    # Wait until Home icon indicates login success
-    WebDriverWait(driver, 20).until(
-        EC.url_changes("https://www.instagram.com/accounts/login/")
-    ))
-    )
-    return driver
+    # 알림 팝업 '나중에 하기' 자동 클릭
+    for label in ["나중에 하기", "Not Now", "나중에"]:
+        try:
+            btn = WebDriverWait(driver, 5).until(
+                EC.element_to_be_clickable((By.XPATH, f"//button[text()='{label}']"))
+            )
+            btn.click()
+            print(f"ℹ️ 팝업 '{label}' 클릭 완료")
+            time.sleep(1)
+        except:
+            pass
