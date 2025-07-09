@@ -1,5 +1,10 @@
 {
-  "DELAY_MULT": 1.2,
-  "MAX_RETRY": 3,
-  "WAIT_GRID_SEC": 12
+  "INSTAGRAM": {
+    "username": "gonggyu_gonggu",
+    "password": "qkr1008##!",
+    "segment": "공구",
+    "limit": 5
+  },
+  "DELAY": { "multiplier": 1.2 },
+  "DM_WINDOW": { "start": "00:00", "end": "03:00" }
 }

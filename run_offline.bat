@@ -1,13 +1,29 @@
 @echo off
-REM Activate virtualenv (modify path if needed)
-if exist .venv\Scripts\activate (
-    call .\.venv\Scripts\activate
-) else (
-    python -m venv .venv
-    call .\.venv\Scripts\activate
-    pip install -r requirements.txt
-)
-REM Navigate to offline package folder
-cd packages\offline
-python batch_runner.py --segment "怨듦뎄" --once
+REM ------------------------------------------------
+REM  1) 스크립트 위치로 이동
+REM ------------------------------------------------
+pushd %~dp0
+
+REM ------------------------------------------------
+REM  2) 가상환경 활성화 (venv 폴더가 이미 있어야 함)
+REM ------------------------------------------------
+call venv\Scripts\activate.bat
+
+REM ------------------------------------------------
+REM  3) (최초 1회만) 의존성 설치
+REM    설치가 완료됐으면 이 부분을 REM으로 주석 처리해도 됩니다.
+REM ------------------------------------------------
+python -m pip install --upgrade pip
+python -m pip install selenium pyyaml pandas xlsxwriter
+
+REM ------------------------------------------------
+REM  4) 매크로 실행
+REM    첫 번째 인자 = 세그먼트, 두 번째 인자 = limit
+REM ------------------------------------------------
+python -m packages.offline.batch_runner --segment "%~1" --limit "%~2"
+
+REM ------------------------------------------------
+REM  5) 원래 경로로 복귀
+REM ------------------------------------------------
+popd
 pause
