@@ -1,39 +1,39 @@
+# response_tracker.py
 
+import os
+import json
 import time
-from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException
+from datetime import datetime
 
-def like_and_follow(driver, uid):
-    try:
-        profile_url = f"https://www.instagram.com/{uid}/"
-        driver.get(profile_url)
-        time.sleep(2)
+LOG_DIR = "logs"
+REPORT_FILE = os.path.join(LOG_DIR, "response_report.json")
 
-        # 팔로우 버튼 클릭
-        try:
-            follow_btn = driver.find_element(By.XPATH, "//button[normalize-space()='팔로우']")
-            follow_btn.click()
-            print(f"✅ 팔로우: {uid}")
-            time.sleep(1)
-        except NoSuchElementException:
-            print(f"⚠️ 팔로우 버튼 없음: {uid}")
+def track_responses():
+    """
+    보낸 DM에 대한 응답을 추적하고, 결과를 보고서 파일로 저장합니다.
+    """
+    print("🔎 응답 추적 시작...")
+    responses = []
 
-        # 첫 번째 게시물 클릭해서 좋아요 누르기
-        try:
-            post = driver.find_element(By.CSS_SELECTOR, "article a[href*='/p/']")
-            post.click()
-            time.sleep(2)
+    # logs 폴더 안의 모든 log 파일을 뒤져서 응답 데이터를 수집합니다.
+    for fname in os.listdir(LOG_DIR):
+        if not fname.endswith(".log"):
+            continue
+        path = os.path.join(LOG_DIR, fname)
+        with open(path, encoding="utf-8") as f:
+            for line in f:
+                # 예: "[2025-07-08 15:00:00] ✔ Response received from @user123"
+                if "✔ Response received" in line:
+                    timestamp, msg = line.split("] ", 1)
+                    user = msg.split()[-1]
+                    responses.append({
+                        "user": user.strip(),
+                        "time": timestamp.strip("[")
+                    })
 
-            like_btn = driver.find_element(By.XPATH, "//section/span/button/div[*[name()='svg'][@aria-label='좋아요']]")
-            like_btn.click()
-            print(f"❤️ 좋아요: {uid}")
-            time.sleep(1)
+    # JSON 보고서로 저장
+    os.makedirs(LOG_DIR, exist_ok=True)
+    with open(REPORT_FILE, "w", encoding="utf-8") as outf:
+        json.dump(responses, outf, ensure_ascii=False, indent=2)
 
-            # 닫기
-            close_btn = driver.find_element(By.XPATH, "//div[@role='dialog']//button[contains(@aria-label, '닫기')]")
-            close_btn.click()
-        except Exception as e:
-            print(f"⚠️ 좋아요 실패: {uid} - {e}")
-
-    except Exception as e:
-        print(f"❌ 전체 실패: {uid} - {e}")
+    print(f"✅ 응답 추적 완료, {len(responses)}건 저장 → {REPORT_FILE}")

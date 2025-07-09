@@ -19,3 +19,28 @@ def sleep_post():
 
 def sleep_action():
     time.sleep(random.uniform(ACTION_DELAY*0.8, ACTION_DELAY*1.2))
+    # utils_delay.py
+
+import datetime
+
+def is_within_dm_window() -> bool:
+    """
+    현재 시간이 00:00~03:00 사이인지 검사합니다.
+    True면 DM 발송 가능 시간, False면 불가 시간입니다.
+    """
+    now = datetime.datetime.now().time()
+    start = datetime.time(0, 0)
+    end   = datetime.time(3, 0)
+    return start <= now <= end
+import datetime
+
+def is_within_dm_window() -> bool:
+    """
+    현재 시간이 00:00~03:00 사이인지 검사합니다.
+    True면 DM 발송 허용, False면 그 외 시간대입니다.
+    """
+    now = datetime.datetime.now().time()
+    start = datetime.time(0, 0)
+    end   = datetime.time(3, 0)
+    return start <= now <= end
+

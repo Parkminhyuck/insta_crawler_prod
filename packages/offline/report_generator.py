@@ -1,35 +1,32 @@
-import pandas as pd
 import os
+import json
+import pandas as pd
+from datetime import datetime
 
-def generate_report(csv_path="logs/processed_accounts.csv", output_path="logs/dm_report.xlsx"):
-    if not os.path.exists(csv_path):
-        print("❌ CSV 로그 파일이 존재하지 않습니다.")
-        return
+LOG_DIR    = "logs"
+EXCEL_FILE = os.path.join(LOG_DIR, "response_report.xlsx")
+CSV_FILE   = os.path.join(LOG_DIR, "response_report.csv")
 
-    df = pd.read_csv(csv_path, names=["uid","grade","followers","likes","status"],
-                     encoding="utf-8")
-    df = df[df["status"] == "성공"]
+def generate_report():
+    """
+    logs/response_report.json 을 읽어
+    엑셀 및 CSV 보고서를 동시에 생성합니다.
+    """
+    # JSON 읽기
+    json_path = os.path.join(LOG_DIR, "response_report.json")
+    with open(json_path, encoding="utf-8") as f:
+        data = json.load(f)
 
-    grade_counts = df["grade"].value_counts().sort_index()
-    avg_followers = df["followers"].mean()
-    avg_likes = df["likes"].mean()
+    # DataFrame 생성
+    df = pd.DataFrame(data)
 
-    with pd.ExcelWriter(output_path, engine="xlsxwriter",
-                        options={"strings_to_urls": False}) as writer:
-        df.to_excel(writer, sheet_name="DM Success Raw", index=False)
+    os.makedirs(LOG_DIR, exist_ok=True)
 
-        summary = pd.DataFrame({
-            "등급": grade_counts.index,
-            "DM 성공 수": grade_counts.values
-        })
-        summary.to_excel(writer, sheet_name="요약", index=False)
+    # 엑셀 저장
+    with pd.ExcelWriter(EXCEL_FILE, engine="xlsxwriter") as writer:
+        df.to_excel(writer, index=False, sheet_name="Responses")
+    print(f"✅ 엑셀 보고서 생성 → {EXCEL_FILE}")
 
-        stats = pd.DataFrame({
-            "지표": ["팔로워 평균", "좋아요 평균", "총 DM 성공 수"],
-            "값": [round(avg_followers,1), round(avg_likes,1), len(df)]
-        })
-        stats.to_excel(writer, sheet_name="지표 통계", index=False)
-    print(f"📊 보고서 생성 완료 → {output_path}")
-
-if __name__ == "__main__":
-    generate_report()
+    # CSV 저장
+    df.to_csv(CSV_FILE, index=False, encoding="utf-8-sig")
+    print(f"✅ CSV 보고서 생성 → {CSV_FILE}")
